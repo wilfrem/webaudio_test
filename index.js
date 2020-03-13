@@ -13,6 +13,15 @@ window.addEventListener("load", function() {
         .then(function(buffer) {
             sourceADPCM = createBufferSource(buffer);
         });
+    const howlerPCM = new Howl({
+        src: ["./pcm/se_maoudamashii_onepoint16.wav"]
+    });
+    const howlerADPCM = new Howl({
+        src: ["./adpcm/se_maoudamashii_onepoint16.wav"],
+        onloaderror: function(e) {
+            console.error(e);
+        }
+    });
     const playPCM = this.document.getElementById("playPCM");
     playPCM.addEventListener("click", function() {
         if (sourcePCM) {
@@ -25,6 +34,14 @@ window.addEventListener("load", function() {
             sourceADPCM.start(0);
         }
     })
+    const playPCMHowler = this.document.getElementById("playPCMHowler");
+    playPCMHowler.addEventListener("click", function() {
+        howlerPCM.play();
+    });
+    const playADPCMHowler = this.document.getElementById("playADPCMHowler");
+    playADPCMHowler.addEventListener("click", function() {
+        howlerADPCM.play();
+    });
 
     function loadBuffer(url) {
         return new Promise(function(resolve, reject) {
