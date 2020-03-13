@@ -2,7 +2,7 @@
 
 window.addEventListener("load", function() {
     window.AudioContext = window.AudioContext||window.webkitAudioContext;
-    context = new AudioContext();
+    const context = new AudioContext();
     let sourcePCM = null;
     let sourceADPCM = null;
     loadBuffer("./pcm/se_maoudamashii_onepoint16.wav")
